@@ -1,16 +1,17 @@
 <template>
   <div id="open-page">
-    <p>איזה תפקיד הכי מתאים לך</p>
     <img
       class="bahad-symbol"
       src="/media/bahadEducation.png"
       alt="bahad-Education"
     />
+
     <img
       class="open-headline"
       src="\media\openHeadline.png"
       alt="open-headline"
     />
+    <p class="fix-size">יאללה נמצא את התפקיד שהכי מתאים לך</p>
 
     <p class="start-btn" @click="startQuiz">התחל</p>
   </div>
@@ -27,7 +28,7 @@ export default {
   },
   methods: {
     startQuiz() {
-      this.$emit('start-quiz');
+      this.$emit("start-quiz");
     },
   },
 };
@@ -47,7 +48,18 @@ export default {
 }
 
 .bahad-symbol {
-  width: 15rem;
+  width: 9rem;
+  filter: drop-shadow(0 0 1rem white);
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .open-headline {
@@ -75,6 +87,11 @@ export default {
 .start-btn:hover {
   background-color: #649dc5;
 }
+
+.fix-size {
+  font-size: 1.5rem;
+}
+
 @media screen and (max-width: 480px) {
 }
 </style>

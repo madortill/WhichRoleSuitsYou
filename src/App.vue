@@ -6,6 +6,8 @@
       src="/media/bahadEducation.png"
       alt="bahad-Education"
     />
+
+    <img class="mador-till" src="/media/MadorTill.svg" alt="mador-till"/>
     <open-page v-if="pageNum === 0" @start-quiz="startQuiz" />
     <quiz  v-if="pageNum === 1"/>
   </div>
@@ -59,7 +61,7 @@ body {
   position: relative;
   text-align: center;
   background-color: #cfedf8;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .mini-bahad-symbol {
@@ -69,9 +71,12 @@ body {
   top: 1rem;
 }
 
-@media (min-width: 1024px) {
+.mador-till {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
 }
-
 @media screen and (max-width: 600px) {
   body {
     /* height: 91vh; */
