@@ -1,9 +1,9 @@
 <template>
   <div id="quiz">
-    <p class="question"></p>
+    <p class="question">{{questions[numQues].title}}</p>
     <div class="btns-container">
-      <img src="/media/noBtn.png" alt="no" />
-      <img src="/media/yesBtn.png" alt="yes" />
+      <img class="btn" src="/media/noBtn.png" alt="no" @click="choseABtn(false)" />
+      <img class="btn" src="/media/yesBtn.png" alt="yes" @click="choseABtn(true)" />
     </div>
   </div>
 </template>
@@ -15,10 +15,8 @@ export default {
   components: {},
   props: [],
   data() {
-    return {};
-  },
-  methods: {
-    questions: [
+    return {
+        questions: [
       {
         Qnum: 0,
         title: "האם את/ה אוהב/ת שטח?",
@@ -101,7 +99,21 @@ export default {
       },
     ],
     numQues: 0,
+  
+    };
   },
+  methods: {
+    choseABtn(theBtn){
+        if(theBtn) {
+
+        } else {
+
+        }
+        if(this.numQues< 9) {
+            this.numQues++;
+        }
+    },
+},
 };
 </script>
 
@@ -109,10 +121,29 @@ export default {
 #quiz {
   width: 100vw;
   height: 100vh;
-
-  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
+.question {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: -8rem;
+}
+
+.btns-container {
+display: flex;
+align-items: center;
+    width: 100vw;
+    justify-content: space-evenly;
+}
+
+.btn {
+    cursor: pointer;
+    width: 7rem;
+}
 @media screen and (max-width: 480px) {
 }
 </style>
