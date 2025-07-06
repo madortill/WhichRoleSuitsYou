@@ -28,10 +28,7 @@ export default {
 </script>
 
 <style>
-@font-face {
-  font-family: "Secular-One";
-  src: url("@/assets/fonts/SecularOne-Regular.ttf");
-}
+
 
 * {
   overflow: hidden;
