@@ -17,7 +17,7 @@ export default {
   data() {
     return {};
   },
-  methods: {
+  methods: { 
     questions: [
       {
         Qnum: 0,
