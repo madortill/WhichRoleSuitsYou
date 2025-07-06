@@ -17,7 +17,7 @@ export default {
   data() {
     return {};
   },
-  methods: { 
+  methods: {
     questions: [
       {
         Qnum: 0,
@@ -65,7 +65,7 @@ export default {
         Qnum: 7,
         title: "האם את/ה אוהב/ת לעבוד בצוות?",
         indexYesRoles: [1],
-        indexNoRoles: [0, 2, 3,4,5],
+        indexNoRoles: [0, 2, 3, 4, 5],
       },
       {
         Qnum: 8,
