@@ -82,6 +82,6 @@ export default {
     bottom: -13rem;
     left: 0rem;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
 }
 </style>

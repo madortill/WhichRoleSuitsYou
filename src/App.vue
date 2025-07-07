@@ -88,7 +88,7 @@ body {
   right: 1rem;
   width: 4rem;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
   body {
     height: 91vh;
     overflow: hidden;

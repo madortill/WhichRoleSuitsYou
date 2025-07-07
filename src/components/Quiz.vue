@@ -294,6 +294,9 @@ export default {
   filter: drop-shadow(0 0 0.4rem rgb(255, 255, 255));
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
+  .soldier-container {
+  left: -2rem; 
+}
 }
 </style>
