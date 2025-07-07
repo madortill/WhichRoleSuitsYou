@@ -3,18 +3,24 @@
     <div class="quiz-container" v-if="!isKickedOut">
       <p class="question">{{ questions[numQues].title }}</p>
       <div class="btns-container">
-        <img
-          class="btn"
-          src="/media/noBtn.png"
-          alt="no"
-          @click="choseABtn(false)"
-        />
-        <img
-          class="btn"
-          src="/media/yesBtn.png"
-          alt="yes"
-          @click="choseABtn(true)"
-        />
+        <div class="btn-container">
+          <img
+            class="btn"
+            :class="{ 'clicked-heart': clickedNo }"
+            src="/media/noBtn.png"
+            alt="no"
+            @click="choseABtn(false)"
+          />
+        </div>
+        <div class="btn-container">
+          <img
+            class="btn"
+            :class="{ 'clicked-heart': clickedYes }"
+            src="/media/yesBtn.png"
+            alt="yes"
+            @click="choseABtn(true)"
+          />
+        </div>
       </div>
 
       <div class="soldier-container">
@@ -90,42 +96,63 @@ export default {
       arrRoles: [0, 0, 0, 0, 0, 0],
       numQues: 0,
       isKickedOut: false,
-      goodWordArr: [ "מעניין אם יצא לך כמוני","כל הכבוד עוד קצת!", "יאללה תחליטו!!"],
+      goodWordArr: [
+        "מעניין אם יצא לך כמוני",
+        "כל הכבוד עוד קצת!",
+        "יאללה תחליטו!!",
+      ],
       goodWordNum: 0,
+      clickedYes: false,
+      clickedNo: false,
     };
   },
   mounted() {
-let timer =setInterval(()=> {
-  if(this.goodWordArr.length-1 > this.goodWordNum) {
-    this.goodWordNum++;
-  } else {
-    clearInterval(timer);
-  }
-  
-},13000);
+    let timer = setInterval(() => {
+      if (this.goodWordArr.length - 1 > this.goodWordNum) {
+        this.goodWordNum++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 13000);
   },
 
   methods: {
     choseABtn(theBtn) {
-      // אם שאלה ראשונה וענו לא
-      if (this.numQues === 0 && !theBtn) {
-        this.isKickedOut = true;
-        return;
-      } else if (this.numQues !== 0) {
-        let arr;
-        if (theBtn) {
-          arr = this.questions[this.numQues].indexYesRoles;
-        } else {
-          arr = this.questions[this.numQues].indexNoRoles;
+      if (this.clickedNo === false && this.clickedYes === false) {
+        // אם שאלה ראשונה וענו לא
+        if (this.numQues === 0 && !theBtn) {
+          this.isKickedOut = true;
+          return;
         }
-        this.addCountAccordingToChoise(arr);
-      }
+        //כדי שיופיע מחלקה של אחרי לחיצה
+        if (theBtn) {
+          this.clickedYes = true;
+        } else {
+          this.clickedNo = true;
+        }
+        //מעביר לשאלה הבאה ומחשב
+        let clickTimer = setTimeout(() => {
+          if (this.numQues !== 0) {
+            let arr;
+            if (theBtn) {
+              arr = this.questions[this.numQues].indexYesRoles;
+            } else {
+              arr = this.questions[this.numQues].indexNoRoles;
+            }
+            this.addCountAccordingToChoise(arr);
+          }
 
-      // קידום לשאלה הבאה
-      if (this.numQues < 9) {
-        this.numQues++;
-      } else if (this.numQues === 9) {
-        this.showResult();
+          // קידום לשאלה הבאה
+          if (this.numQues < 9) {
+            this.numQues++;
+          } else if (this.numQues === 9) {
+            this.showResult();
+          }
+
+          this.clickedYes = false;
+          this.clickedNo = false;
+          clearTimeout(clickTimer);
+        }, 1000);
       }
     },
 
@@ -203,6 +230,14 @@ let timer =setInterval(()=> {
   justify-content: space-evenly;
 }
 
+.btn-container {
+  width: 13rem;
+  height: 13rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn {
   cursor: pointer;
   width: 9rem;
@@ -236,7 +271,8 @@ let timer =setInterval(()=> {
 }
 
 @keyframes pop {
-  0%, 20% {
+  0%,
+  20% {
     bottom: -10rem; /* מצב התחלה - למטה */
   }
   25% {
@@ -252,7 +288,11 @@ let timer =setInterval(()=> {
     bottom: -10rem; /* השהיה למטה עד הסיבוב הבא */
   }
 }
-
+.clicked-heart {
+  transition: all 0.5s ease;
+  width: 12rem;
+  filter: drop-shadow(0 0 0.4rem rgb(255, 255, 255));
+}
 
 @media screen and (max-width: 480px) {
 }
