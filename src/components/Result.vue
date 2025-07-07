@@ -59,7 +59,7 @@ export default {
   font-size: 2.5rem;
 }
 .role-img {
-  width: 20rem;
+  width: 30rem;
 }
 @media screen and (max-width: 600px) {
 }
