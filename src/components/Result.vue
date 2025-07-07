@@ -2,6 +2,7 @@
   <div id="result">
     <p class="headline">{{ arrRoles[resultIndex].name }}</p>
     <img class="role-img" :src="arrRoles[resultIndex].imgUrl" alt="roleImg" />
+    <img class="soldier" src="/media/soldier/finish.png" alt="soldier"/>
   </div>
 </template>
 
@@ -60,6 +61,13 @@ export default {
 }
 .role-img {
   width: 30rem;
+}
+
+.soldier {
+  width: 22rem;
+    position: absolute;
+    bottom: -13rem;
+    left: 0rem;
 }
 @media screen and (max-width: 600px) {
 }

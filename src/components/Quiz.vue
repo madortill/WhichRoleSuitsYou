@@ -16,6 +16,11 @@
           @click="choseABtn(true)"
         />
       </div>
+
+      <div class="soldier-container">
+        <div class="talk-bubble">{{ goodWordArr[goodWordNum] }}</div>
+        <img class="soldier" src="/media/soldier/quiz.png" alt="soldier" />
+      </div>
     </div>
     <kicked-out v-if="isKickedOut" />
   </div>
@@ -85,8 +90,21 @@ export default {
       arrRoles: [0, 0, 0, 0, 0, 0],
       numQues: 0,
       isKickedOut: false,
+      goodWordArr: [ "מעניין אם יצא לך כמוני","כל הכבוד עוד קצת!", "יאללה תחליטו!!"],
+      goodWordNum: 0,
     };
   },
+  mounted() {
+let timer =setInterval(()=> {
+  if(this.goodWordArr.length-1 > this.goodWordNum) {
+    this.goodWordNum++;
+  } else {
+    clearInterval(timer);
+  }
+  
+},13000);
+  },
+
   methods: {
     choseABtn(theBtn) {
       // אם שאלה ראשונה וענו לא
@@ -131,7 +149,6 @@ export default {
           theRole.push(i); // תוצאה שווה לגבוהה – הוספה למערך
         }
       }
-      console.log(theRole);
       return theRole;
     },
 
@@ -151,10 +168,6 @@ export default {
 #quiz {
   width: 100vw;
   height: 100vh;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly; */
 }
 
 .quiz-container {
@@ -182,6 +195,7 @@ export default {
     transform: translateY(-10px);
   }
 }
+
 .btns-container {
   display: flex;
   align-items: center;
@@ -193,6 +207,53 @@ export default {
   cursor: pointer;
   width: 9rem;
 }
+
+.talk-bubble {
+  background-image: url("/media/talkBubble.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 7rem;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 4rem;
+}
+
+.soldier {
+  width: 15rem;
+}
+
+.soldier-container {
+  position: absolute;
+  bottom: -10rem;
+  left: 5rem;
+  display: flex;
+  flex-direction: row-reverse;
+  pointer-events: none;
+  animation: pop 17s ease-in-out infinite; /* משך כולל של 60 שניות */
+}
+
+@keyframes pop {
+  0%, 20% {
+    bottom: -10rem; /* מצב התחלה - למטה */
+  }
+  25% {
+    bottom: -30rem; /* קפיצה למעלה */
+  }
+  80% {
+    bottom: -30rem; /* נשאר למעלה במשך 40% מהאנימציה */
+  }
+  85% {
+    bottom: -10rem; /* חזרה למטה */
+  }
+  100% {
+    bottom: -10rem; /* השהיה למטה עד הסיבוב הבא */
+  }
+}
+
+
 @media screen and (max-width: 480px) {
 }
 </style>

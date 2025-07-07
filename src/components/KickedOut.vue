@@ -1,6 +1,8 @@
 <template>
     <div id="kicked-out">
 <p class="headline">אז חפשו בחיל אחר...</p>
+<img class="soldier" src="/media/soldier/kickedOut.png" alt="soldier"/>
+
     </div>
   </template>
   
@@ -31,6 +33,13 @@
 .headline {
     font-weight: bold;
     font-size: 2rem;
+}
+
+.soldier {
+  width: 29rem;
+    position: absolute;
+    bottom: -16rem;
+    right: 5rem;
 }
   @media screen and (max-width: 600px) {
 
