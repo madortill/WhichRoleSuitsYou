@@ -1,25 +1,24 @@
 <template>
   <div id="app">
     <img
-      v-if="pageNum === 1"
+      v-if="pageNum > 0"
       class="mini-bahad-symbol"
       src="/media/bahadEducation.png"
       alt="bahad-Education"
     />
 
     <img class="mador-till" src="/media/MadorTill.svg" alt="mador-till" />
-    
-    <open-page v-if="pageNum === 0" @start-quiz="nextPage" />
-    <quiz v-if="pageNum === 1" @show-result="nextPage"/>
-    <result v-if="pageNum === 2"/>
 
+    <open-page v-if="pageNum === 0" @start-quiz="nextPage" />
+    <quiz v-if="pageNum === 1" @show-result="showResult" />
+    <result v-if="pageNum === 2" :resultIndex="resultIndex" />
   </div>
 </template>
 
 <script>
 import OpenPage from "./components/OpenPage.vue";
 import Quiz from "./components/Quiz.vue";
-import Result from './components/Result.vue';
+import Result from "./components/Result.vue";
 
 export default {
   name: "app",
@@ -29,9 +28,14 @@ export default {
   data() {
     return {
       pageNum: 0,
+      resultIndex: -1,
     };
   },
   methods: {
+    showResult(i) {
+      this.resultIndex = i;
+      this.nextPage();
+    },
     nextPage() {
       this.pageNum++;
     },

@@ -82,32 +82,7 @@ export default {
           indexNoRoles: [1],
         },
       ],
-      arrRoles: [
-        {
-          name: "מפקד/ת נוער",
-          counter: 0,
-        },
-        {
-          name: 'מפק"צ חינוך',
-          counter: 0,
-        },
-        {
-          name: 'מש"ק/ית חו"יה',
-          counter: 0,
-        },
-        {
-          name: 'מש"ק/ית הוראה והדרכה',
-          counter: 0,
-        },
-        {
-          name: 'מש"ק/ית גשרים',
-          counter: 0,
-        },
-        {
-          name: 'מש"ק/ית תקומה',
-          counter: 0,
-        },
-      ],
+      arrRoles: [0, 0, 0, 0, 0, 0],
       numQues: 0,
       isKickedOut: false,
     };
@@ -129,16 +104,16 @@ export default {
       }
 
       // קידום לשאלה הבאה
-      if (this.numQues < 10) {
+      if (this.numQues < 9) {
         this.numQues++;
-      } else if (this.numQues === 10) {
+      } else if (this.numQues === 9) {
         this.showResult();
       }
     },
 
     addCountAccordingToChoise(arr) {
       for (let i = 0; i < arr.length; i++) {
-        this.arrRoles[arr[i]].counter++;
+        this.arrRoles[arr[i]]++;
       }
     },
 
@@ -147,7 +122,7 @@ export default {
       let theRole = [];
 
       for (let i = 0; i < this.arrRoles.length; i++) {
-        const count = this.arrRoles[i].counter;
+        const count = this.arrRoles[i];
 
         if (count > maxCounter) {
           maxCounter = count;
@@ -156,7 +131,7 @@ export default {
           theRole.push(i); // תוצאה שווה לגבוהה – הוספה למערך
         }
       }
-
+      console.log(theRole);
       return theRole;
     },
 
@@ -164,6 +139,7 @@ export default {
       let resultArr = this.checkWhichRoleBiggestCount();
       if (resultArr.length > 0) {
         const randomIndex = Math.floor(Math.random() * resultArr.length);
+        console.log(resultArr[randomIndex]);
         this.$emit("show-result", resultArr[randomIndex]);
       }
     },
