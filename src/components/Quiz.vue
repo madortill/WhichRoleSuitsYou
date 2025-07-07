@@ -296,7 +296,11 @@ export default {
 
 @media screen and (max-width: 500px) {
   .soldier-container {
-  left: -2rem; 
-}
+    left: -2rem;
+  }
+
+  #quiz {
+    height: 91vh;
+  }
 }
 </style>

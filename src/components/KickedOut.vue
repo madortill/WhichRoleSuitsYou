@@ -44,5 +44,8 @@ font-size: 1.5rem;
   right: 5rem;
 }
 @media screen and (max-width: 500px) {
+  #kicked-out {
+    height: 91vh;
+  }
 }
 </style>

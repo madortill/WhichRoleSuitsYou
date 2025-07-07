@@ -93,5 +93,8 @@ export default {
 }
 
 @media screen and (max-width: 500px) {
+  #open-page {
+    height: 91vh;
+  }
 }
 </style>

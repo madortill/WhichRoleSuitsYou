@@ -83,5 +83,8 @@ export default {
     left: 0rem;
 }
 @media screen and (max-width: 500px) {
+  #result {
+  height: 91vh;
+}
 }
 </style>
