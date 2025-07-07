@@ -68,8 +68,9 @@ export default {
 .headline {
   font-weight: bold;
   font-size: 2.5rem;
-  margin-top: 10rem;
+  margin-top: 5rem;
 }
+
 .role-img {
   width: 30rem;
   border-radius: 2rem;
