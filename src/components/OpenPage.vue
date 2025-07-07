@@ -1,5 +1,6 @@
 <template>
   <div id="open-page">
+    <lomda-info/>
     <img
       class="bahad-symbol"
       src="/media/bahadEducation.png"
@@ -18,10 +19,11 @@
 </template>
 
 <script>
+import LomdaInfo from './lomdaInfo.vue';
 export default {
   name: "open-page",
 
-  components: {},
+  components: {LomdaInfo},
   props: [],
   data() {
     return {};
