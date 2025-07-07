@@ -44,6 +44,10 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: "Assistant";
+  src: url("@/assets/fonts/Assistant-Regular.ttf");
+}
 * {
   overflow: hidden;
   font-family: "Assistant";
@@ -63,7 +67,6 @@ body {
 }
 
 #app {
-  font-family: "Heebo";
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -87,12 +90,12 @@ body {
 }
 @media screen and (max-width: 600px) {
   body {
-    /* height: 91vh; */
+    height: 91vh;
     overflow: hidden;
   }
 
-  /* #app {
+  #app {
     height: 91vh;
-  } */
+  }
 }
 </style>

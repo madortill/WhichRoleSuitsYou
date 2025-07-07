@@ -61,16 +61,19 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .headline {
   font-weight: bold;
   font-size: 2.5rem;
+  margin-top: 10rem;
 }
 .role-img {
   width: 30rem;
+  border-radius: 2rem;
+  margin-top: 5rem;
 }
 
 .soldier {
