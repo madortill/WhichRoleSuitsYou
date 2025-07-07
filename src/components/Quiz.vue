@@ -209,8 +209,9 @@ export default {
 .question {
   font-size: 2rem;
   font-weight: bold;
-  margin-top: -8rem;
   animation: floatUpDown 3s ease-in-out infinite;
+  width: 90%;
+  height: 8rem;
 }
 
 @keyframes floatUpDown {
@@ -228,6 +229,7 @@ export default {
   align-items: center;
   width: 100vw;
   justify-content: space-evenly;
+  margin-top: -10rem;
 }
 
 .btn-container {
