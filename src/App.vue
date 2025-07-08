@@ -9,9 +9,10 @@
 
     <img class="mador-till" src="/media/MadorTill.svg" alt="mador-till" />
 
-    <open-page v-if="pageNum === 0" @start-quiz="nextPage" />
-    <quiz v-if="pageNum === 1" @show-result="showResult" />
-    <result v-if="pageNum === 2" :resultIndex="resultIndex" />
+    <open-page v-if="pageNum === 0" @start-intro="nextPage" />
+<intro  @start-quiz="nextPage" v-if="pageNum === 1"/>
+    <quiz v-if="pageNum === 2" @show-result="showResult" />
+    <result v-if="pageNum === 3" :resultIndex="resultIndex" />
   </div>
 </template>
 
@@ -19,11 +20,12 @@
 import OpenPage from "./components/OpenPage.vue";
 import Quiz from "./components/Quiz.vue";
 import Result from "./components/Result.vue";
+import Intro from "./components/Intro.vue";
 
 export default {
   name: "app",
 
-  components: { OpenPage, Quiz, Result },
+  components: { OpenPage, Quiz, Result, Intro },
   props: [],
   data() {
     return {
@@ -88,6 +90,7 @@ body {
   bottom: 1rem;
   right: 1rem;
   width: 4rem;
+  z-index: 1;
 }
 @media screen and (max-width: 500px) {
   body {

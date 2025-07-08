@@ -1,7 +1,15 @@
 <template>
-  <div id="open-page">
+  <div id="intro">
     <div class="card">
-      <div>
+      <p class="headline">לפני שנתחיל</p>
+      <p>בפניך יהיו 10 שאלות שתענה עליהם ב-</p>
+
+      <div class="hearts-container">
+        <img class="heart" src="/media/yesBtn.png" alt="yes" />
+        <img class="heart" src="/media/noBtn.png" alt="no" />
+      </div>
+      <p>כדי לדעת מה התפקיד שמותאם לך</p>
+      <div class="input-container">
         <p class="text-next-to-input">מה השם שלך?</p>
         <input
           class="input-tag"
@@ -20,13 +28,14 @@
 <script>
 import LomdaInfo from "./lomdaInfo.vue";
 export default {
-  name: "open-page",
+  name: "intro",
 
   components: { LomdaInfo },
   props: [],
   data() {
     return {};
   },
+
   methods: {
     startQuiz() {
       this.$emit("start-quiz");
@@ -36,7 +45,7 @@ export default {
 </script>
 
 <style scoped>
-#open-page {
+#intro {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -51,20 +60,24 @@ export default {
 .card {
   background-color: white;
   border-radius: 3rem;
-  box-shadow: 0 -1rem 3rem rgba(0, 0, 0, 0.5);
-  width: 100vh;
-  height: 90%;
+  box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.15);
+  width: 100vw;
+  height: 85%;
   position: absolute;
-  bottom: 0;
+  /* bottom: -2rem; */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  animation: slideIn 2s ease-in-out forwards;
 }
 
-@keyframes floatUpDown {
-  0%,
-  100% {
-    transform: translateY(0);
+@keyframes slideIn {
+  from {
+    bottom: -100rem;
   }
-  50% {
-    transform: translateY(-10px);
+  to {
+    bottom: -2rem;
   }
 }
 
@@ -91,15 +104,42 @@ export default {
 }
 
 .text-next-to-input {
-    color: #2180c3;
+  color: #2180c3;
 }
 
 .input-tag {
-    border: 0.5rem solid #2180c3;
+  border: 0.2rem solid #2180c3;
+  border-radius: 2rem;
+  width: 14rem;
+  height: 3rem;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 22rem;
+}
+
+.heart {
+  width: 5rem;
+}
+
+.hearts-container {
+  display: flex;
+  width: 15rem;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.headline {
+  color: #2180c3;
+  font-size: 2rem;
+  margin-bottom: -3rem;
 }
 
 @media screen and (max-width: 500px) {
-  #open-page {
+  #intro {
     height: 91vh;
   }
 }

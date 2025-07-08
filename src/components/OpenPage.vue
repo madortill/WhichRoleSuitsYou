@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     startQuiz() {
-      this.$emit("start-quiz");
+      this.$emit("start-intro");
     },
   },
 };

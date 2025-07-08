@@ -1,6 +1,11 @@
 <template>
   <div id="kicked-out">
-    <img @click="toRestart" src="/media/restartIcon/white.svg" alt="restart" class="restart"/>
+    <img
+      @click="toRestart"
+      src="/media/restartIcon/white.svg"
+      alt="restart"
+      class="restart"
+    />
     <p class="text">באסה לך מלש"ב/ית יקר/ה</p>
     <p class="headline">אז כדאי שתחפש/י בחיל אחר...</p>
     <img class="soldier" src="/media/soldier/kickedOut.png" alt="soldier" />
@@ -14,13 +19,13 @@ export default {
   props: [],
   data() {
     return {
-     changeBg: false,
+      changeBg: false,
     };
   },
   mounted() {
     // בזמן שהקומפוננטה נטענת
-    
-    let timer =setTimeout(()=> {
+
+    let timer = setTimeout(() => {
       this.changeBg = true;
       clearTimeout(timer);
     }, 2000);
@@ -41,24 +46,24 @@ export default {
   flex-direction: column;
   align-items: center;
   font-weight: bold;
- 
-  animation: fadeIn 2s ease-in-out forwards ; /* משך כולל של 60 שניות */
+  animation: fadeIn 2s ease-in-out forwards; /* משך כולל של 60 שניות */
 }
 
 @keyframes fadeIn {
-from{
-  background-color: #cfedf8;
-opacity: 0;
+  from {
+    background-color: #cfedf8;
+    opacity: 0;
+  }
+  to {
+    background-color: #5e6061;
+    color: white;
+    opacity: 1;
+  }
 }
-to {
-  background-color: #5E6061;
-  color: white;
-  opacity: 1;
-}
-}
+
 .text {
-margin-top: 10rem;
-font-size: 1.5rem;
+  margin-top: 10rem;
+  font-size: 1.5rem;
 }
 
 .headline {
