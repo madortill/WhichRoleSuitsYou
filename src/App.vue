@@ -10,7 +10,7 @@
     <img class="mador-till" src="/media/MadorTill.svg" alt="mador-till" />
 
     <open-page v-if="pageNum === 0" @start-intro="nextPage" />
-<intro  @start-quiz="nextPage" v-if="pageNum === 1"/>
+    <intro @start-quiz="toQuiz" v-if="pageNum === 1" />
     <quiz v-if="pageNum === 2" @show-result="showResult" />
     <result v-if="pageNum === 3" :resultIndex="resultIndex" />
   </div>
@@ -31,6 +31,8 @@ export default {
     return {
       pageNum: 0,
       resultIndex: -1,
+      userName: "",
+      userGender: "",
     };
   },
   methods: {
@@ -38,6 +40,13 @@ export default {
       this.resultIndex = i;
       this.nextPage();
     },
+
+    toQuiz(user) {
+      this.userName = user.name;
+      this.userGender = user.gender;
+      this.nextPage();
+    },
+
     nextPage() {
       this.pageNum++;
     },

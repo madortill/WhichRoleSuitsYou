@@ -209,9 +209,14 @@ export default {
 .question {
   font-size: 2rem;
   font-weight: bold;
-  animation: floatUpDown 3s ease-in-out infinite;
-  width: 90%;
+  animation: floatUpDown-25f0e682 3s ease-in-out infinite;
+  width: 40rem;
   height: 8rem;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
 }
 
 @keyframes floatUpDown {
@@ -303,6 +308,12 @@ export default {
 
   #quiz {
     height: 91vh;
+  }
+
+  .question {
+    width: 90%;
+
+  
   }
 }
 </style>
