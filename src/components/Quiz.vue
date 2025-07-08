@@ -83,6 +83,7 @@ export default {
           femaleTitle: "האם את אוהבת את השפה העברית?",
           indexYesRoles: [1, 3],
           indexNoRoles: [0, 2, 4, 5],
+          
         },
         {
           maleTitle: 'האם אתה מתעניין ביחידות השונות בצה"ל?',
