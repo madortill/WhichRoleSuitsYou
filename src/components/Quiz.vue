@@ -225,7 +225,7 @@ export default {
 .dots {
   width: 4rem;
 }
-
+ 
 .dots-container {
   width: 50rem;
   display: flex;
