@@ -6,7 +6,8 @@
       alt="restart"
       class="restart"
     />
-
+<p>איזה כיף {{ userName }}!</p>
+<p>קיבלת</p>
     <p class="headline">{{ arrRoles[resultIndex].name }}</p>
     <img class="role-img" :src="getRoleSrc()" alt="roleImg" />
     <img class="soldier" src="/media/soldier/finish.png" alt="soldier" />
@@ -17,7 +18,7 @@
 export default {
   name: "result",
 
-  props: ["resultIndex"],
+  props: ["resultIndex", "userName"],
   data() {
     return {
       arrRoles: [
@@ -74,6 +75,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  color: #157145;
+  font-size: 2rem !important;
 }
 
 .headline {
@@ -85,7 +88,7 @@ export default {
 .role-img {
   width: 30rem;
   border-radius: 2rem;
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
 }
 
 .soldier {

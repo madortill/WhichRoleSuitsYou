@@ -11,8 +11,8 @@
 
     <open-page v-if="pageNum === 0" @start-intro="nextPage" />
     <intro @start-quiz="toQuiz" v-if="pageNum === 1" />
-    <quiz v-if="pageNum === 2" @show-result="showResult" />
-    <result v-if="pageNum === 3" :resultIndex="resultIndex" />
+    <quiz :userGender="userGender" v-if="pageNum === 2" @show-result="showResult" />
+    <result v-if="pageNum === 3" :resultIndex="resultIndex" :userName="userName"/>
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
 * {
   overflow: hidden;
   font-family: "Assistant";
-  font-size: calc(10px + 0.5vw);
+  /* font-size: calc(10px + 0.5vw); */
 }
 
 :root {

@@ -1,7 +1,13 @@
 <template>
   <div id="quiz">
     <div class="quiz-container" v-if="!isKickedOut">
-      <p class="question">{{ questions[numQues].title }}</p>
+      <div class="dots-container up">
+        <img class="dots" src="/media/upDots.png" />
+      </div>
+      <p class="question">{{ questions[numQues][userGender + "Title"] }}</p>
+      <div class="dots-container down">
+        <img class="dots" src="/media/downDots.png" />
+      </div>
       <div class="btns-container">
         <div class="btn-container">
           <img
@@ -28,7 +34,7 @@
         <img class="soldier" src="/media/soldier/quiz.png" alt="soldier" />
       </div>
     </div>
-    <kicked-out v-if="isKickedOut" />
+    <kicked-out v-if="isKickedOut" :userGender="userGender" />
   </div>
 </template>
 
@@ -38,57 +44,67 @@ export default {
   name: "quiz",
 
   components: { KickedOut },
-  props: [],
+  props: ["userGender"],
   data() {
     return {
       questions: [
         {
-          title: "האם את/ה מעוניין/ת לשרת שירות משמעותי?",
+          maleTitle: "האם אתה מעוניין לשרת שירות משמעותי?",
+          femaleTitle: "האם את מעוניינת לשרת שירות משמעותי?",
           indexYesRoles: [],
           indexNoRoles: [],
         },
         {
-          title: "האם את/ה אוהב/ת שטח?",
+          maleTitle: "האם אתה אוהב שטח?",
+          femaleTitle: "האם את אוהבת שטח?",
           indexYesRoles: [0, 1],
           indexNoRoles: [2, 3, 4, 5],
         },
         {
-          title: "האם את/ה אוהב/ת לעבוד עם מחשבים?",
+          maleTitle: "האם אתה אוהב לעבוד עם מחשבים?",
+          femaleTitle: "האם את אוהבת לעבוד עם מחשבים?",
           indexYesRoles: [4],
           indexNoRoles: [0, 1, 2, 3, 5],
         },
         {
-          title: "האם את/ה אוהב/ת את ההיסטוריה של הארץ?",
+          maleTitle: "האם אתה אוהב את ההיסטוריה של הארץ?",
+          femaleTitle: "האם את אוהבת את ההיסטוריה של הארץ?",
           indexYesRoles: [2],
           indexNoRoles: [0, 1, 3, 4, 5],
         },
         {
-          title: "האם את/ה אוהב/ת לעבוד עם ילדים?",
+          maleTitle: "האם אתה אוהב לעבוד עם ילדים?",
+          femaleTitle: "האם את אוהבת לעבוד עם ילדים?",
           indexYesRoles: [5],
           indexNoRoles: [0, 1, 2, 3, 4],
         },
         {
-          title: "האם את/ה אוהב/ת את השפה העברית?",
+          maleTitle: "האם אתה אוהב את השפה העברית?",
+          femaleTitle: "האם את אוהבת את השפה העברית?",
           indexYesRoles: [1, 3],
           indexNoRoles: [0, 2, 4, 5],
         },
         {
-          title: 'האם את/ה מתעניינ/ת ביחידות השונות בצה"ל?',
+          maleTitle: 'האם אתה מתעניין ביחידות השונות בצה"ל?',
+          femaleTitle: 'האם את מתעניינת ביחידות השונות בצה"ל?',
           indexYesRoles: [0],
           indexNoRoles: [1, 2, 3, 4, 5],
         },
         {
-          title: "האם את/ה אוהב/ת לעבוד עם בני נוער?",
+          maleTitle: "האם אתה אוהב לעבוד עם בני נוער?",
+          femaleTitle: "האם את אוהבת לעבוד עם בני נוער?",
           indexYesRoles: [0, 4, 5],
           indexNoRoles: [1, 2, 3],
         },
         {
-          title: "האם את/ה אוהב/ת לעבוד בצוות?",
+          maleTitle: "האם אתה אוהב לעבוד בצוות?",
+          femaleTitle: "האם את אוהבת לעבוד בצוות?",
           indexYesRoles: [1],
           indexNoRoles: [0, 2, 3, 4, 5],
         },
         {
-          title: "האם יש לך ניסיון עם אוכלוסיות ייחודיות?",
+          maleTitle: "האם יש לך ניסיון עם אוכלוסיות ייחודיות?",
+          femaleTitle: "האם יש לך ניסיון עם אוכלוסיות ייחודיות?",
           indexYesRoles: [3],
           indexNoRoles: [1],
         },
@@ -206,6 +222,25 @@ export default {
   justify-content: space-evenly;
 }
 
+.dots {
+  width: 4rem;
+}
+
+.dots-container {
+  width: 50rem;
+  display: flex;
+  animation: floatUpDown-25f0e682 3s ease-in-out infinite;
+}
+
+.up {
+  transform: rotate(180deg);
+  margin-bottom: -10rem;
+  flex-direction: row-reverse;
+}
+
+.down {
+  margin-top: -10rem;
+}
 .question {
   font-size: 2rem;
   font-weight: bold;
@@ -217,6 +252,7 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 2rem;
+  margin: -4rem;
 }
 
 @keyframes floatUpDown {
@@ -301,6 +337,11 @@ export default {
   filter: drop-shadow(0 0 0.4rem rgb(255, 255, 255));
 }
 
+@media screen and (max-width: 670px) {
+  .dots-container {
+    width: 97%;
+  }
+}
 @media screen and (max-width: 500px) {
   .soldier-container {
     left: -2rem;
@@ -312,8 +353,10 @@ export default {
 
   .question {
     width: 90%;
+  }
 
-  
+  .quiz-container {
+    height: 90vh;
   }
 }
 </style>

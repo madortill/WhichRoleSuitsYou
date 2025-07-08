@@ -28,7 +28,7 @@
           <input
             type="radio"
             id="male"
-            value="זכר"
+            value="male"
             v-model="gender"
             class="the-checkbox"
           />
@@ -38,7 +38,7 @@
           <input
             type="radio"
             id="female"
-            value="נקבה"
+            value="female"
             v-model="gender"
             class="the-checkbox"
           />
@@ -46,13 +46,9 @@
         </div>
       </div>
 
-      <p
-  class="start-btn"
-  :class="{ disabled: !canStart }"
-  @click="startQuiz"
->
-  התחל
-</p>
+      <p class="start-btn" :class="{ disabled: !canStart }" @click="startQuiz">
+        התחל
+      </p>
     </div>
   </div>
 </template>
@@ -74,37 +70,35 @@ export default {
   },
   methods: {
     validateName() {
-    const trimmed = this.fullName.trim();
-    const regex = /^[A-Za-z\u0590-\u05FF\s]+$/;
+      const trimmed = this.fullName.trim();
+      const regex = /^[A-Za-z\u0590-\u05FF\s]+$/;
 
-    if (trimmed && !regex.test(trimmed)) {
-      alert("נא להזין רק אותיות. מספרים ותווים מיוחדים אינם מותרים.");
-      this.isNameValid = false;
-      return;
-    }
+      if (trimmed && !regex.test(trimmed)) {
+        alert("נא להזין רק אותיות. מספרים ותווים מיוחדים אינם מותרים.");
+        this.isNameValid = false;
+        return;
+      }
 
-    if (trimmed.length < 2) {
-      this.isNameValid = false;
-      return;
-    }
+      if (trimmed.length < 2) {
+        this.isNameValid = false;
+        return;
+      }
 
-    this.isNameValid = true;
-  },
-  tryStartQuiz() {
-    if (this.canStart) {
-      this.startQuiz();
-    }
-  },
-  startQuiz() {
-    if (this.canStart) {
+      this.isNameValid = true;
+    },
+    tryStartQuiz() {
+      if (this.canStart) {
+        this.startQuiz();
+      }
+    },
+    startQuiz() {
+      if (this.canStart) {
         this.$emit("start-quiz", {
-      name: this.fullName.trim(),
-      gender: this.gender,
-    });
-   
-    }
-  },
-    
+          name: this.fullName.trim(),
+          gender: this.gender,
+        });
+      }
+    },
   },
 };
 </script>

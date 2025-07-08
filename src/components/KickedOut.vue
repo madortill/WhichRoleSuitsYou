@@ -6,8 +6,8 @@
       alt="restart"
       class="restart"
     />
-    <p class="text">באסה לך מלש"ב/ית יקר/ה</p>
-    <p class="headline">אז כדאי שתחפש/י בחיל אחר...</p>
+    <p class="text">{{genderArr[0]}}</p>
+    <p class="headline">{{genderArr[1]}}</p>
     <img class="soldier" src="/media/soldier/kickedOut.png" alt="soldier" />
   </div>
 </template>
@@ -16,10 +16,12 @@
 export default {
   name: "kicked-out",
 
-  props: [],
+  props: ['userGender'],
   data() {
     return {
       changeBg: false,
+      maleArr: ['באסה לך מלש"ב יקר', 'אז כדאי שתחפש בחיל אחר...'],
+      femaleArr: ['באסה לך מלש"בית יקרה', 'אז כדאי שתחפשי בחיל אחר...'],
     };
   },
   mounted() {
@@ -35,6 +37,11 @@ export default {
       window.location.reload();
     },
   },
+  computed: {
+  genderArr() {
+    return this.userGender === 'male' ? this.maleArr : this.femaleArr;
+  }
+}
 };
 </script>
 
