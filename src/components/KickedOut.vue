@@ -9,6 +9,7 @@
     <p class="text">{{genderArr[0]}}</p>
     <p class="headline">{{genderArr[1]}}</p>
     <img class="soldier" src="/media/soldier/kickedOut.png" alt="soldier" />
+    <img class="mador-till" src="/media/MadorTill/white.svg" alt="mador-till" />
   </div>
 </template>
 

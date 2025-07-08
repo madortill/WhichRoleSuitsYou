@@ -157,6 +157,8 @@ export default {
       isKickedOut: false,
       goodWordArr: [
         "מעניין אם יצא לך כמוני",
+        "בחירה טובה",
+        "אין על חיל חינוך",
         "כל הכבוד עוד קצת!",
         "יאללה תחליטו!!",
       ],
@@ -172,7 +174,7 @@ export default {
       } else {
         clearInterval(timer);
       }
-    }, 13000);
+    }, 14000);
   },
 
   methods: {
@@ -181,6 +183,7 @@ export default {
         // אם שאלה ראשונה או אחת לפני האחרונה וענו לא
         if ((this.numQues === 0 || this.numQues === 15 )&& !theBtn) {
           this.isKickedOut = true;
+          this.$emit('hide-mador-till-logo');
           return;
         }
         //כדי שיופיע מחלקה של אחרי לחיצה
@@ -352,25 +355,32 @@ export default {
   display: flex;
   flex-direction: row-reverse;
   pointer-events: none;
-  animation: pop 17s ease-in-out infinite; /* משך כולל של 60 שניות */
+  animation: pop 30s ease-in-out infinite; /* משך כולל של 60 שניות */
 }
 
 @keyframes pop {
   0%,
-  20% {
+  15% {
     bottom: -10rem; /* מצב התחלה - למטה */
   }
-  25% {
+  20% {
     bottom: -30rem; /* קפיצה למעלה */
   }
-  80% {
+  50% {
     bottom: -30rem; /* נשאר למעלה במשך 40% מהאנימציה */
   }
-  85% {
+  55% {
+    bottom: -10rem;
+  }
+
+  70% {
     bottom: -10rem; /* חזרה למטה */
   }
-  100% {
-    bottom: -10rem; /* השהיה למטה עד הסיבוב הבא */
+  75% {
+    bottom: -30rem; /* השהיה למטה עד הסיבוב הבא */
+  }
+  90% {
+    bottom: -30rem;
   }
 }
 .clicked-heart {

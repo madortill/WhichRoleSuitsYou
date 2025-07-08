@@ -7,11 +7,11 @@
       alt="bahad-Education"
     />
 
-    <img class="mador-till" src="/media/MadorTill.svg" alt="mador-till" />
+    <img v-if="showMadorTill" class="mador-till" src="/media/MadorTill/green.svg" alt="mador-till" />
 
     <open-page v-if="pageNum === 0" @start-intro="nextPage" />
     <intro @start-quiz="toQuiz" v-if="pageNum === 1" />
-    <quiz :userGender="userGender" v-if="pageNum === 2" @show-result="showResult" />
+    <quiz :userGender="userGender" v-if="pageNum === 2" @show-result="showResult" @hide-mador-till-logo="hideMadorTillLogo"/>
     <result v-if="pageNum === 3" :resultIndex="resultIndex" :userName="userName"/>
   </div>
 </template>
@@ -33,6 +33,7 @@ export default {
       resultIndex: -1,
       userName: "",
       userGender: "",
+      showMadorTill: true,
     };
   },
   methods: {
@@ -50,6 +51,10 @@ export default {
     nextPage() {
       this.pageNum++;
     },
+
+    hideMadorTillLogo(){
+      this.showMadorTill = false;
+    }
   },
 };
 </script>
