@@ -1,31 +1,28 @@
 <template>
   <div id="open-page">
-    <lomda-info/>
-    <img
-      class="bahad-symbol"
-      src="/media/bahadEducation.png"
-      alt="bahad-Education"
-    />
+    <div class="card">
+      <div>
+        <p class="text-next-to-input">מה השם שלך?</p>
+        <input
+          class="input-tag"
+          placeholder="הקלידו כאן שם"
+          v-model="fullName"
+          lang="he"
+          type="text"
+        />
+      </div>
 
-    <img
-      class="open-headline"
-      src="\media\openHeadline.png"
-      alt="open-headline"
-    />
-    <p class="fix-size">בואו נמצא את התפקיד שהכי</p>
-    <p class="fix-size-second">מתאים לכם</p>
-
-
-    <p class="start-btn" @click="startQuiz">כן!</p>
+      <p class="start-btn" @click="startQuiz">התחל</p>
+    </div>
   </div>
 </template>
 
 <script>
-import LomdaInfo from './lomdaInfo.vue';
+import LomdaInfo from "./lomdaInfo.vue";
 export default {
   name: "open-page",
 
-  components: {LomdaInfo},
+  components: { LomdaInfo },
   props: [],
   data() {
     return {};
@@ -51,23 +48,24 @@ export default {
   font-weight: bold;
 }
 
-.bahad-symbol {
-  width: 9rem;
-  filter: drop-shadow(0 0 1rem white);
-  animation: floatUpDown 3s ease-in-out infinite;
+.card {
+  background-color: white;
+  border-radius: 3rem;
+  box-shadow: 0 -1rem 3rem rgba(0, 0, 0, 0.5);
+  width: 100vh;
+  height: 90%;
+  position: absolute;
+  bottom: 0;
 }
 
 @keyframes floatUpDown {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-10px);
   }
-}
-
-.open-headline {
-  width: 30rem;
 }
 
 .start-btn {
@@ -92,13 +90,12 @@ export default {
   background-color: #649dc5;
 }
 
-.fix-size {
-  font-size: 1.5rem;
+.text-next-to-input {
+    color: #2180c3;
 }
 
-.fix-size-second {
-  font-size: 2rem;
-  margin-top: -2rem;
+.input-tag {
+    border: 0.5rem solid #2180c3;
 }
 
 @media screen and (max-width: 500px) {

@@ -80,6 +80,7 @@ body {
   position: absolute;
   left: 1rem;
   top: 1rem;
+  z-index: 1;
 }
 
 .mador-till {

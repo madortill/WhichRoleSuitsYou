@@ -1,8 +1,15 @@
 <template>
   <div id="result">
+    <img
+      @click="toRestart"
+      src="/media/restartIcon/green.svg"
+      alt="restart"
+      class="restart"
+    />
+
     <p class="headline">{{ arrRoles[resultIndex].name }}</p>
     <img class="role-img" :src="getRoleSrc()" alt="roleImg" />
-    <img class="soldier" src="/media/soldier/finish.png" alt="soldier"/>
+    <img class="soldier" src="/media/soldier/finish.png" alt="soldier" />
   </div>
 </template>
 
@@ -43,15 +50,19 @@ export default {
   },
   computed: {
     baseURL() {
-    // Use Vite's built-in import.meta.env to get the base URL
-    return import.meta.env.BASE_URL || "/";
-  }
+      // Use Vite's built-in import.meta.env to get the base URL
+      return import.meta.env.BASE_URL || "/";
+    },
   },
   methods: {
     getRoleSrc() {
       // Dynamically adjust the src path based on the base URL
       return `${this.baseURL}${this.arrRoles[this.resultIndex].imgUrl}`;
-    },},
+    },
+    toRestart() {
+      window.location.reload();
+    },
+  },
 };
 </script>
 
@@ -61,8 +72,8 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .headline {
@@ -79,13 +90,21 @@ export default {
 
 .soldier {
   width: 22rem;
-    position: absolute;
-    bottom: -13rem;
-    left: 0rem;
+  position: absolute;
+  bottom: -13rem;
+  left: 0rem;
+}
+
+.restart {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 5rem;
+  cursor: pointer;
 }
 @media screen and (max-width: 500px) {
   #result {
-  height: 91vh;
-}
+    height: 91vh;
+  }
 }
 </style>
