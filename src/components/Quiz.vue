@@ -233,7 +233,6 @@ export default {
 }
 
 .up {
-  transform: rotate(180deg);
   margin-bottom: -10rem;
   flex-direction: row-reverse;
 }
