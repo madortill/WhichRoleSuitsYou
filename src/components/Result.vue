@@ -2,12 +2,12 @@
   <div id="result">
     <img
       @click="toRestart"
-      src="/media/restartIcon/green.svg"
+      src="/media/restartIcon/blue.svg"
       alt="restart"
       class="restart"
     />
-<p>איזה כיף {{ userName }}!</p>
-<p>קיבלת</p>
+<p class="fix-text top-text">איזה כיף {{ userName }}!</p>
+<p class="fix-text">קיבלת:</p>
     <p class="headline">{{ arrRoles[resultIndex].name }}</p>
     <img class="role-img" :src="getRoleSrc()" alt="roleImg" />
     <img class="soldier" src="/media/soldier/finish.png" alt="soldier" />
@@ -76,26 +76,28 @@ export default {
   align-items: center;
   justify-content: flex-start;
   color: #157145;
-  font-size: 2rem !important;
+  font-size: 2rem ;
+  font-weight: bold;
 }
 
 .headline {
-  font-weight: bold;
+ 
   font-size: 2.5rem;
   margin-top: 5rem;
+  color: #2180c3;
 }
 
 .role-img {
-  width: 30rem;
   border-radius: 2rem;
-  /* margin-top: 5rem; */
+    max-height: 23rem;
+    max-width: 95%;
 }
 
 .soldier {
-  width: 22rem;
-  position: absolute;
-  bottom: -13rem;
-  left: 0rem;
+  width: 20rem;
+    position: absolute;
+    bottom: -12rem;
+    left: 0rem;
 }
 
 .restart {
@@ -104,6 +106,14 @@ export default {
   top: 1rem;
   width: 5rem;
   cursor: pointer;
+}
+
+.fix-text {
+  margin: 0rem;
+}
+
+.top-text {
+  margin-top: 6rem;
 }
 @media screen and (max-width: 500px) {
   #result {

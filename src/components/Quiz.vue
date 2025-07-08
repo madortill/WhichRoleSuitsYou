@@ -83,7 +83,7 @@ export default {
           femaleTitle: "האם את אוהבת את השפה העברית?",
           indexYesRoles: [1, 3],
           indexNoRoles: [0, 2, 4, 5],
-          
+
         },
         {
           maleTitle: 'האם אתה מתעניין ביחידות השונות בצה"ל?',
@@ -108,6 +108,48 @@ export default {
           femaleTitle: "האם יש לך ניסיון עם אוכלוסיות ייחודיות?",
           indexYesRoles: [3],
           indexNoRoles: [1],
+        },
+        {
+          maleTitle: "יש לך ניסיון הדרכתי?",
+          femaleTitle: "יש לך ניסיון הדרכתי?",
+          indexYesRoles: [0,1,3],
+          indexNoRoles: [2,4,5],
+        },
+        {
+          maleTitle: "האם חשוב לך לשקם את העוטף הצפוני והדרומי?",
+          femaleTitle: "האם חשוב לך לשקם את העוטף הצפוני והדרומי?",
+          indexYesRoles: [5],
+          indexNoRoles: [0,1,2,3,4],
+        },
+        {
+          maleTitle: "האם בעינייך ידע הוא הכלי לשינוי חברתי?",
+          femaleTitle: "האם בעינייך ידע הוא הכלי לשינוי חברתי?",
+          indexYesRoles: [4],
+          indexNoRoles: [0,1,2,3,5],
+        },
+        {
+          maleTitle: "האם אתה מאלה שמארגנים הכל מבין החברים שלך?",
+          femaleTitle: "האם את מאלה שמארגנים הכל מבין החברים שלך?",
+          indexYesRoles: [2],
+          indexNoRoles: [0,1,3,4,5],
+        },
+        {
+          maleTitle: "האם לדעתך יש לך חוסן גבוה?",
+          femaleTitle: "האם לדעתך יש לך חוסן גבוה?",
+          indexYesRoles: [0,1],
+          indexNoRoles: [2,3,4,5],
+        },
+        {
+          maleTitle: 'האם אתה חושב שחינוך בצה"ל הוא דבר הכרחי?',
+          femaleTitle: 'האם את חושבת שחינוך בצה"ל הוא דבר הכרחי?',
+          indexYesRoles: [],
+          indexNoRoles: [],
+        },
+        {
+          maleTitle: 'האם אתה אוהב להתעסק במספרים?',
+          femaleTitle: 'האם את אוהבת להתעסק במספרים?',
+          indexYesRoles: [4],
+          indexNoRoles: [0,1,2,3,5],
         },
       ],
       arrRoles: [0, 0, 0, 0, 0, 0],
@@ -136,8 +178,8 @@ export default {
   methods: {
     choseABtn(theBtn) {
       if (this.clickedNo === false && this.clickedYes === false) {
-        // אם שאלה ראשונה וענו לא
-        if (this.numQues === 0 && !theBtn) {
+        // אם שאלה ראשונה או אחת לפני האחרונה וענו לא
+        if ((this.numQues === 0 || this.numQues === 15 )&& !theBtn) {
           this.isKickedOut = true;
           return;
         }
@@ -160,9 +202,9 @@ export default {
           }
 
           // קידום לשאלה הבאה
-          if (this.numQues < 9) {
+          if (this.numQues < this.questions.length-1) {
             this.numQues++;
-          } else if (this.numQues === 9) {
+          } else if (this.numQues === this.questions.length-1) {
             this.showResult();
           }
 

@@ -2,7 +2,7 @@
   <div id="intro">
     <div class="card">
       <p class="headline blue-text">לפני שנתחיל</p>
-      <p>בפניך יהיו 10 שאלות שתענה עליהם ב-</p>
+      <p>בפניך יהיו 17 שאלות שתענה עליהם ב-</p>
 
       <div class="hearts-container">
         <img class="heart" src="/media/yesBtn.png" alt="yes" />
