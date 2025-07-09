@@ -402,7 +402,7 @@ export default {
 }
 .clicked-heart {
   transition: all 0.5s ease;
-  width: 12rem;
+  width: 10rem;
   filter: drop-shadow(0 0 0.4rem rgb(255, 255, 255));
 }
 
