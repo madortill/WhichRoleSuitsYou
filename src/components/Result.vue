@@ -15,7 +15,9 @@
     <p class="text-guide">לעוד פרטים על התפקיד- הדוכן פה ממול</p>
 
     <div class="img-container">
-      <img src="/media/grayLace.png" alt="lace" class="gray-lace" />
+      <img v-if="resultIndex !== 0" src="/media/grayLace.png" alt="lace" class="gray-lace" />
+      <img v-if="resultIndex === 0" src="/media/brownLace.png" alt="lace" class="gray-lace" />
+
       <img class="role-img" :src="getRoleSrc()" alt="roleImg" />
       <div class="fix-lace"></div>
     </div>
