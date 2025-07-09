@@ -345,7 +345,7 @@ export default {
 
 .btn {
   cursor: pointer;
-  width: 9rem;
+  width: 8rem;
 }
 
 .talk-bubble {
