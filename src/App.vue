@@ -12,7 +12,7 @@
     <open-page v-if="pageNum === 0" @start-intro="nextPage" />
     <intro @start-quiz="toQuiz" v-if="pageNum === 1" />
     <quiz :userGender="userGender" v-if="pageNum === 2" @show-result="showResult" @hide-mador-till-logo="hideMadorTillLogo"/>
-    <result v-if="pageNum === 3" :resultIndex="resultIndex" :userName="userName"/>
+    <result v-if="pageNum === 3" :resultIndex="resultIndex" :userName="userName" :userGender="userGender"/>
   </div>
 </template>
 

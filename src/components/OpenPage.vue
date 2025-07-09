@@ -13,7 +13,7 @@
       alt="open-headline"
     />
     <p class="fix-size">בואו נמצא את התפקיד שהכי</p>
-    <p class="fix-size-second">מתאים לכם</p>
+    <p class="fix-size-second">מתאים לך</p>
 
 
     <p class="start-btn" @click="startQuiz">כן!</p>

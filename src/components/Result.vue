@@ -9,7 +9,7 @@
     <p class="top-text">איזה כיף {{ userName }}!</p>
     <div class="headline-container">
       <p class="mini-text">קיבלת &nbsp;</p>
-      <p class="headline">{{ arrRoles[resultIndex].name }}</p>
+      <p class="headline">{{ roleName }}</p>
     </div>
 
     <p class="text-guide">לעוד פרטים על התפקיד- הדוכן פה ממול</p>
@@ -28,32 +28,38 @@
 export default {
   name: "result",
 
-  props: ["resultIndex", "userName"],
+  props: ["resultIndex", "userName", "userGender"],
   data() {
     return {
       arrRoles: [
         {
-          name: "מפקד/ת נוער",
+          maleName: "מפקד נוער",
+          femaleName: "מפקדת נוער",
           imgUrl: "media/role/role0.jpeg",
         },
         {
-          name: 'מפק"צ חינוך',
+          maleName: 'מפק"צ חינוך',
+          femaleName:  'מפק"צית חינוך',
           imgUrl: "media/role/role1.jpeg",
         },
         {
-          name: 'מש"ק/ית חו"יה',
+          maleName: 'מש"ק חו"יה',
+          femaleName:  'מש"קית חו"יה',
           imgUrl: "media/role/role2.jpeg",
         },
         {
-          name: 'מש"ק/ית הוראה והדרכה',
+          maleName: 'מש"ק הוראה והדרכה',
+          femaleName:  'מש"קית הוראה והדרכה',
           imgUrl: "media/role/role3.jpeg",
         },
         {
-          name: 'מש"ק/ית גשרים',
+          maleName: 'מש"ק גשרים',
+          femaleName:  'מש"קית גשרים',
           imgUrl: "media/role/role4.jpeg",
         },
         {
-          name: 'מש"ק/ית תקומה',
+          maleName: 'מש"ק תקומה',
+          femaleName:  'מש"קית תקומה',
           imgUrl: "media/role/role5.jpeg",
         },
       ],
@@ -64,6 +70,10 @@ export default {
       // Use Vite's built-in import.meta.env to get the base URL
       return import.meta.env.BASE_URL || "/";
     },
+    roleName() {
+    const role = this.arrRoles[this.resultIndex];
+    return this.userGender === "male" ? role.maleName : role.femaleName;
+  },
   },
   methods: {
     getRoleSrc() {
